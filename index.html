@@ -1,0 +1,725 @@
+<title>Campfire</title>
+<meta name="description" content="Campfire runs creator-led UGC campaigns for consumer apps.">
+<link rel="canonical" href="https://joincampfire.co/">
+<meta name="theme-color" content="#FDF8EC">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Campfire">
+<meta property="og:url" content="https://joincampfire.co/">
+<meta property="og:title" content="Campfire">
+<meta property="og:description" content="Creator-led UGC campaigns for consumer apps. We put your app on every For You page.">
+<meta property="og:image" content="https://joincampfire.co/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://joincampfire.co/assets/og-image.jpg">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one continuous page that fades from the logo's cream at the top, through firelight behind the videos, into the deck's black at the bottom, with embers rising as it darkens. */
+:root{
+  color-scheme: light;
+  --cream:#FDF8EC;        /* logo ground */
+  --ink:#17110C;          /* deck black, warm */
+  --char:#251B14;         /* raised surface on black */
+  --ember:#E8632B;        /* logo orange */
+  --log:#B8361A;          /* deep wood red */
+  --ash:#6F6155;          /* muted text on cream */
+  --smoke:#B4A595;        /* muted text on black */
+  --line:rgba(23,17,12,.13);
+  --line-dark:rgba(253,248,236,.13);
+
+  --display:"Outfit", "Futura", "Avenir Next", system-ui, sans-serif;
+  --body:"Instrument Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --mono:"DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --gutter:clamp(16px, 4vw, 40px);
+  --wrap:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 1rem/1.6 var(--body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ember);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:.98;margin:0;text-wrap:balance}
+h2{font-size:clamp(2.2rem,5.4vw,4rem)}
+p{margin:0}
+.eyebrow{font:500 .75rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ash);display:flex;align-items:center;gap:.6rem}
+.eyebrow img{width:12px;height:auto;flex:none;margin-top:-3px}
+.lede{font-size:1.125rem;color:var(--ash);max-width:34rem}
+
+.wood{
+  background:url(assets/wood.jpg) 0 45%/cover,var(--ember);
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  padding-bottom:.08em; /* keep descenders inside the clip */
+}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.55rem;font:600 .95rem/1 var(--body);text-decoration:none;padding:.95rem 1.35rem;border-radius:999px;border:1px solid transparent;transition:transform .2s ease,background-color .3s ease,color .3s ease,border-color .3s ease;white-space:nowrap}
+.btn svg{width:14px;height:14px;transition:transform .2s ease}
+.btn:hover svg{transform:translateX(3px)}
+.btn-ink{background:var(--ink);color:var(--cream)}
+.btn-ink:hover{background:var(--log)}
+.btn-ember{background:var(--ember);color:var(--ink)}
+.btn-ember:hover{background:var(--cream)}
+.btn-cream{background:var(--cream);color:var(--ink)}
+.btn-cream:hover{background:#F2D3B0}
+.textlink{font-weight:600;text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:2px}
+.textlink:hover{color:var(--log)}
+
+/* ---------- header: follows the page from cream into night ---------- */
+.site-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(253,248,236,.9);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid transparent;transition:background-color .45s ease,border-color .45s ease}
+.site-head.scrolled{border-bottom-color:var(--line)}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:68px}
+.brand img{height:30px;width:auto}
+.nav{display:flex;align-items:center;gap:2rem}
+.nav a:not(.btn){font-size:.92rem;font-weight:500;text-decoration:none;color:var(--ash);transition:color .3s}
+.nav a:not(.btn):hover{color:var(--ink)}
+.nav .btn{padding:.7rem 1.05rem;font-size:.88rem}
+.site-head.dark{border-bottom-color:var(--line-dark)}
+.site-head.dark .nav a:not(.btn){color:var(--smoke)}
+.site-head.dark .nav a:not(.btn):hover{color:var(--cream)}
+.site-head.dark .btn-ink{background:var(--cream);color:var(--ink)}
+.site-head.dark .btn-ink:hover{background:var(--ember)}
+@media (max-width:820px){.nav a:not(.btn){display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(2.5rem,6vw,5rem) clamp(2rem,4.5vw,3.5rem);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(2rem,5vw,4rem);align-items:center}
+.hero-copy{display:grid;gap:1.6rem;min-width:0}
+.hero h1{font-size:clamp(2.9rem,7.4vw,6rem);line-height:.92;letter-spacing:-.045em}
+.hero .lede{font-size:clamp(1.05rem,1.4vw,1.2rem)}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1.25rem 1.75rem;margin-top:.4rem}
+.proof{display:flex;align-items:center;gap:.85rem;padding-top:1.4rem;border-top:1px solid var(--line);margin-top:.6rem;font-size:.92rem;color:var(--ash)}
+.proof b{color:var(--ink);font-weight:600}
+.faces{display:flex;flex:none}
+.faces img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid var(--cream)}
+.faces img+img{margin-left:-10px}
+
+.fan{position:relative;height:clamp(400px,46vw,560px);min-width:0}
+.fan .phone{position:absolute;top:50%;left:50%;width:clamp(170px,19vw,236px);aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:var(--ink);box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 30px 60px -20px rgba(60,25,8,.45),0 8px 18px -6px rgba(60,25,8,.25);text-decoration:none;color:var(--cream);transform-origin:50% 90%;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.fan .phone img{width:100%;height:100%;object-fit:cover}
+.fan .p1{transform:translate(-118%,-46%) rotate(-9deg)}
+.fan .p2{transform:translate(-50%,-54%) rotate(0deg);z-index:2}
+.fan .p3{transform:translate(18%,-46%) rotate(9deg)}
+.fan .phone:hover{z-index:3}
+.fan .p3 .views{left:auto;right:10px}
+.fan .p1:hover{transform:translate(-118%,-50%) rotate(-7deg)}
+.fan .p3:hover{transform:translate(18%,-50%) rotate(7deg)}
+.fan .p2:hover{transform:translate(-50%,-58%)}
+.is-loading .fan .p1,.is-loading .fan .p3{transform:translate(-50%,-50%) rotate(0)}
+.views{position:absolute;left:10px;bottom:10px;display:inline-flex;align-items:center;gap:.4rem;font:500 .8rem/1 var(--mono);padding:.42rem .6rem;border-radius:999px;background:rgba(23,17,12,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:var(--cream)}
+.views svg{width:9px;height:9px;fill:currentColor}
+
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:minmax(0,1fr)}
+  .fan{height:auto;display:flex;gap:12px;justify-content:center}
+  .fan .phone,.is-loading .fan .phone{position:relative;top:auto;left:auto;transform:none!important;width:min(31%,180px)}
+  .fan .p2{margin-top:-14px}
+}
+
+/* ---------- companies: conveyor belt ---------- */
+.clients{padding-block:1rem 1.5rem;display:grid;gap:1.4rem}
+.belt{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.belt-track{display:flex;width:max-content;will-change:transform}
+.belt ul{list-style:none;margin:0;padding:0 3.5rem 0 0;display:flex;gap:3.5rem;flex:none}
+/* both belts drift on their own, pause under the mouse, and can be dragged or swiped sideways */
+.belt,.reels{cursor:grab;-webkit-user-select:none;user-select:none;touch-action:pan-y;overscroll-behavior-x:contain}
+.belt.dragging,.reels.dragging{cursor:grabbing}
+.belt img,.reel video{-webkit-user-drag:none}
+.client{display:flex;align-items:center;gap:.8rem;flex:none}
+.client img{width:48px;height:48px;border-radius:12px;flex:none;box-shadow:0 0 0 1px var(--line),0 6px 14px -8px rgba(60,25,8,.35)}
+.client b{display:block;font:600 1.02rem/1.2 var(--display);letter-spacing:-.01em;white-space:nowrap}
+.client span{display:block;font-size:.8rem;color:var(--ash);line-height:1.3;white-space:nowrap}
+
+/* ---------- page: one gradient from cream at the top to black at the bottom ---------- */
+/* JS re-anchors these stops to the real section positions; the percentages are the no-JS fallback. */
+.page{position:relative;isolation:isolate;background-color:var(--ink);
+  background-image:linear-gradient(180deg,#FDF8EC 0%,#FAF1E3 18%,#F6E8D5 23%,#F0D9BE 42%,#E9C6A2 48%,#D29868 52%,#B86A36 56%,#8D4924 60%,#5A301C 64%,#1C110B 74%,#0A0706 84%,#070504 100%)}
+.page::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(70% 800px at 76% var(--glow-y,34%), rgba(255,138,64,.16), rgba(255,138,64,0) 70%),
+    radial-gradient(50% 640px at 6% var(--glow2-y,58%), rgba(184,54,26,.16), rgba(184,54,26,0) 70%);
+  animation:flicker 6s ease-in-out infinite}
+.on-dark{color:var(--cream)}
+.on-dark .eyebrow,.on-dark .lede{color:var(--smoke)}
+.on-dark h2,.on-dark h3{color:var(--cream)}
+
+/* ---------- work ---------- */
+.work{padding-top:clamp(3.5rem,6.5vw,5.5rem)}
+.work-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:1rem 2rem}
+.work-head .titles{display:grid;gap:1.25rem}
+.work-head p:not(.eyebrow){color:var(--ash)}
+.reels{--card-w:clamp(176px,17vw,300px);--gap:clamp(12px,1.6vw,22px);position:relative;margin-top:clamp(2rem,4vw,3rem);height:calc(var(--card-w) * 16 / 9);overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.reel{position:absolute;top:0;left:calc(var(--gutter) + var(--i) * (var(--card-w) + var(--gap)));width:var(--card-w);aspect-ratio:9/16;margin:0;border-radius:16px;overflow:hidden;background:var(--char);box-shadow:0 0 0 1px rgba(23,17,12,.08),0 22px 44px -22px rgba(60,25,8,.55);will-change:transform}
+.reel video{width:100%;height:100%;object-fit:cover;display:block}
+.reel::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(23,17,12,0) 58%,rgba(23,17,12,.85) 100%)}
+.reel.has-sound{box-shadow:0 0 0 2px var(--ember),0 22px 44px -22px rgba(232,99,43,.6)}
+.sound{position:absolute;top:10px;right:10px;z-index:5;touch-action:manipulation;width:38px;height:38px;padding:0;border:0;border-radius:50%;display:grid;place-items:center;background:rgba(23,17,12,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--cream);cursor:pointer;transition:background-color .2s,color .2s,transform .2s}
+.sound:hover{background:rgba(23,17,12,.82);transform:scale(1.07)}
+.sound svg{width:18px;height:18px}
+.sound .on,.sound[aria-pressed="true"] .off{display:none}
+.sound[aria-pressed="true"] .on{display:block}
+.sound[aria-pressed="true"]{background:var(--ember);color:var(--ink)}
+.reel figcaption{position:absolute;left:14px;right:14px;bottom:14px;z-index:1;display:flex;align-items:baseline;justify-content:space-between;gap:.5rem;color:var(--cream)}
+.reel figcaption b{font:800 clamp(1.5rem,2.4vw,2.2rem)/1 var(--display);letter-spacing:-.04em}
+.reel figcaption span{font:500 .72rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--smoke)}
+
+/* ---------- team ---------- */
+.team{padding-block:clamp(2.5rem,5vw,4rem) 0}
+.team-head{display:grid;gap:1.25rem;max-width:46rem}
+.founders{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1.5rem,3vw,2.5rem);margin-top:clamp(2rem,4vw,3rem)}
+.founder{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(1.1rem,2.4vw,1.8rem);align-items:end;min-width:0}
+.founder .photo{aspect-ratio:4/5;max-width:100%;border-radius:14px;overflow:hidden;background:rgba(23,17,12,.06);box-shadow:0 0 0 1px var(--line),0 24px 44px -26px rgba(60,25,8,.45)}
+.founder .photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(1.02)}
+.founder .meta{display:grid;gap:.9rem;padding-bottom:.3rem;min-width:0}
+.founder h3{font-size:clamp(1.7rem,2.8vw,2.3rem)}
+.founder .role{font:500 .78rem/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ash);padding-bottom:1rem;border-bottom:1px solid var(--line)}
+.founder .role b{color:var(--ink);font-weight:500}
+.links{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{display:inline-flex;align-items:center;gap:.45rem;font:500 .85rem/1 var(--body);text-decoration:none;color:var(--ink);padding:.55rem .8rem;border-radius:999px;border:1px solid var(--line);transition:border-color .2s,background-color .2s}
+.chip:hover{border-color:var(--ink);background:rgba(23,17,12,.05)}
+.chip svg{width:14px;height:14px}
+@media (max-width:960px){.founders{grid-template-columns:minmax(0,1fr)}.founder{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}}
+@media (max-width:480px){.founder{grid-template-columns:minmax(0,1fr)}.founder .photo{aspect-ratio:4/3}.founder .photo img{object-position:50% 35%}}
+
+/* ---------- process: the timeline fills with fire as you scroll ---------- */
+.process{padding-block:clamp(3.5rem,6.5vw,5.5rem) 0}
+.process .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:2.5rem clamp(2rem,6vw,6rem);align-items:start}
+.process-head{display:grid;gap:1.25rem;position:sticky;top:calc(env(safe-area-inset-top,0px) + 120px)}
+.steps{list-style:none;margin:0;padding:0 0 0 3.2rem;display:grid;gap:clamp(2.6rem,5vw,4rem);position:relative}
+.steps .track,.steps .fill{position:absolute;left:7px;top:0;width:2px;border-radius:2px}
+.steps .track{background:var(--line-dark)}
+.steps .fill{background:linear-gradient(180deg,#F59447,var(--ember) 60%,var(--log));transform-origin:top;transform:scaleY(var(--p,0));box-shadow:0 0 14px 1px rgba(232,99,43,.55)}
+.step{position:relative;display:grid;gap:.7rem;align-content:start;min-width:0}
+.step::before{content:"";position:absolute;top:.1rem;left:-3.2rem;width:16px;height:16px;border-radius:50%;background:var(--ink);border:2px solid rgba(253,248,236,.35);transition:background-color .35s,border-color .35s,box-shadow .35s}
+.step.lit::before{background:var(--ember);border-color:var(--ember);box-shadow:0 0 0 6px rgba(232,99,43,.18),0 0 18px 2px rgba(232,99,43,.5)}
+.step .when{font:500 .74rem/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--smoke);transition:color .35s}
+.step.lit .when{color:var(--ember)}
+.step h3{font-size:clamp(1.45rem,2.2vw,1.8rem);letter-spacing:-.025em;line-height:1.1}
+.step p{color:var(--smoke);font-size:1rem;max-width:40ch}
+@media (max-width:860px){
+  .process .wrap{grid-template-columns:minmax(0,1fr)}
+  .process-head{position:static}
+  .steps{padding-left:2.6rem}
+  .step::before{left:-2.6rem}
+}
+
+/* ---------- contact ---------- */
+.contact{position:relative;padding-block:clamp(4rem,8vw,6.5rem) 0;overflow:hidden}
+.contact::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(110% 900px at 82% calc(100% + 260px), rgba(240,120,50,.95) 0%, rgba(214,74,32,.6) 30%, rgba(120,40,16,.2) 55%, rgba(23,17,12,0) 72%),
+    radial-gradient(70% 500px at 5% calc(100% + 200px), rgba(184,54,26,.45) 0%, rgba(23,17,12,0) 70%);
+  animation:flicker 5s ease-in-out infinite}
+@keyframes flicker{0%,100%{opacity:.88}22%{opacity:1}41%{opacity:.84}63%{opacity:.97}80%{opacity:.9}}
+.contact .inner{display:grid;justify-items:start;gap:1.6rem;max-width:48rem}
+.contact h2{font-size:clamp(3rem,9vw,7.4rem);letter-spacing:-.055em;line-height:.88}
+.contact .actions{display:flex;flex-wrap:wrap;gap:.8rem}
+.foot{margin-top:clamp(3.5rem,7vw,5.5rem);border-top:1px solid var(--line-dark);padding-block:1.6rem 2rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;font:400 .8rem/1.4 var(--mono);color:var(--smoke)}
+.foot img{height:24px;width:auto}
+.foot nav{display:flex;flex-wrap:wrap;gap:1.25rem}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--cream)}
+
+/* embers float over the whole page; screen blending makes them vanish on cream and glow on black */
+.embers{position:fixed;inset:0;width:100%;height:100%;z-index:30;pointer-events:none;mix-blend-mode:screen;opacity:0;transition:opacity .2s linear}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+  .embers{display:none}
+}
+</style>
+
+<div class="page" id="page">
+<header class="site-head" id="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Campfire home"><img src="assets/campfire-logo.png" alt="campfire" width="886" height="231"></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#team">Team</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a class="btn btn-ink" href="#contact">Book a call</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero is-loading" id="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow"><img src="assets/flame.png" alt="" width="48" height="77">UGC campaigns for consumer apps</p>
+        <h1>we put your app on every <span class="wood">for you page.</span></h1>
+        <p class="lede">Campfire runs creator-led UGC campaigns. We find the creators, approve every script and video, and keep them posting until your view goals are hit.</p>
+        <div class="hero-actions">
+          <a class="btn btn-ink" href="#contact">Book a call <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+          <a class="textlink" href="#work">See videos</a>
+        </div>
+        <div class="proof">
+          <div class="faces"><img src="assets/toby.jpg" alt="" width="38" height="38"><img src="assets/gavin.jpg" alt="" width="38" height="38"></div>
+          <p>Run by <b>Toby Leng</b> and <b>Gavin Cheng</b>, who have collectively generated <b>250M+ views</b>.</p>
+        </div>
+      </div>
+
+      <div class="fan" aria-label="Campaign videos">
+        <div class="phone p1">
+          <img src="assets/vid-2.jpg" alt="Campaign video, 3.7 million views" width="540" height="960">
+          <span class="views"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 0l9 5-9 5z"/></svg>3.7M</span>
+        </div>
+        <div class="phone p2">
+          <img src="assets/vid-1.jpg" alt="Campaign video, 5.3 million views" width="540" height="960">
+          <span class="views"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 0l9 5-9 5z"/></svg>5.3M</span>
+        </div>
+        <div class="phone p3">
+          <img src="assets/vid-3.jpg" alt="Campaign video, 1.1 million views" width="540" height="960">
+          <span class="views"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 0l9 5-9 5z"/></svg>1.1M</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clients" aria-label="Companies we've worked with">
+    <div class="wrap"><p class="eyebrow">Companies we've worked with</p></div>
+    <div class="belt">
+      <div class="belt-track">
+        <ul>
+          <li class="client"><img src="assets/logo-fizz.jpg" alt="" width="48" height="48"><div><b>Fizz</b><span>Social networking app</span></div></li>
+          <li class="client"><img src="assets/logo-turbo.jpg" alt="" width="48" height="48"><div><b>Turbo AI</b><span>AI study app</span></div></li>
+          <li class="client"><img src="assets/logo-quizard.jpg" alt="" width="48" height="48"><div><b>Quizard AI</b><span>AI homework helper</span></div></li>
+          <li class="client"><img src="assets/logo-unstuck.jpg" alt="" width="48" height="48"><div><b>Unstuck AI</b><span>AI study tool</span></div></li>
+          <li class="client"><img src="assets/logo-phantom.jpg" alt="" width="48" height="48"><div><b>Phantom</b><span>Crypto wallet</span></div></li>
+          <li class="client"><img src="assets/logo-shapes.jpg" alt="" width="48" height="48"><div><b>Shapes Inc.</b><span>AI group chats</span></div></li>
+          <li class="client"><img src="assets/logo-craftbook.jpg" alt="" width="48" height="48"><div><b>Craftbook</b><span>Crochet made easy</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+    <section class="team" id="team">
+      <div class="wrap">
+        <div class="team-head">
+          <p class="eyebrow">The team</p>
+          <h2>our team.</h2>
+          <p class="lede">We've collectively generated over 250 million views. We built audiences ourselves before running campaigns for anyone else, and every Campfire creator gets that playbook.</p>
+        </div>
+        <div class="founders">
+          <article class="founder">
+            <div class="photo"><img src="assets/toby.jpg" alt="Toby Leng" width="560" height="560" loading="lazy"></div>
+            <div class="meta">
+              <h3>Toby Leng</h3>
+              <p class="role">Creator Marketing Lead @ <b>Fizz</b></p>
+              <div class="links">
+                <a class="chip" href="https://www.instagram.com/toby.lengg/" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1.75" y="1.75" width="12.5" height="12.5" rx="3.5"/><circle cx="8" cy="8" r="3"/><circle cx="11.9" cy="4.1" r=".6" fill="currentColor" stroke="none"/></svg>Instagram</a>
+                <a class="chip" href="https://www.linkedin.com/in/tobyleng/" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="1.5" y="5.5" width="2.6" height="9"/><circle cx="2.8" cy="2.8" r="1.5"/><path d="M6.2 5.5h2.5v1.3c.4-.8 1.4-1.5 2.8-1.5 2.4 0 3 1.5 3 3.6v5.6h-2.6V9.6c0-1.1-.2-2-1.4-2-1.3 0-1.7.9-1.7 2.1v4.8H6.2z"/></svg>LinkedIn</a>
+              </div>
+            </div>
+          </article>
+          <article class="founder">
+            <div class="photo"><img src="assets/gavin.jpg" alt="Gavin Cheng" width="560" height="560" loading="lazy"></div>
+            <div class="meta">
+              <h3>Gavin Cheng</h3>
+              <p class="role">Growth @ <b>Phantom</b></p>
+              <div class="links">
+                <a class="chip" href="https://www.instagram.com/gavinchengg/" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1.75" y="1.75" width="12.5" height="12.5" rx="3.5"/><circle cx="8" cy="8" r="3"/><circle cx="11.9" cy="4.1" r=".6" fill="currentColor" stroke="none"/></svg>Instagram</a>
+                <a class="chip" href="https://www.linkedin.com/in/gavinchengg/" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="1.5" y="5.5" width="2.6" height="9"/><circle cx="2.8" cy="2.8" r="1.5"/><path d="M6.2 5.5h2.5v1.3c.4-.8 1.4-1.5 2.8-1.5 2.4 0 3 1.5 3 3.6v5.6h-2.6V9.6c0-1.1-.2-2-1.4-2-1.3 0-1.7.9-1.7 2.1v4.8H6.2z"/></svg>LinkedIn</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="work" id="work">
+      <div class="wrap">
+        <div class="work-head">
+          <div class="titles">
+            <p class="eyebrow">Content examples</p>
+            <h2>our top performing videos.</h2>
+          </div>
+          <p>Posts from our campaigns.</p>
+        </div>
+      </div>
+    <div class="reels" role="group" aria-label="Top performing campaign videos">
+      <figure class="reel" style="--i:0" aria-label="Campaign video, 1.1 million views"><video src="assets/tt-2.mp4" poster="assets/tt-2.jpg" muted loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-hidden="true"></video><button class="sound" type="button" aria-pressed="false" aria-label="Unmute video"><svg class="off" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h3l4-3.5v11L6 12H3z" fill="currentColor"/><path d="M13.5 7.5l5 5M18.5 7.5l-5 5"/></svg><svg class="on" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h3l4-3.5v11L6 12H3z" fill="currentColor"/><path d="M13.5 7.2a4 4 0 0 1 0 5.6M15.8 5a7 7 0 0 1 0 10"/></svg></button><figcaption><b>1.1M</b><span>views</span></figcaption></figure>
+      <figure class="reel" style="--i:1" aria-label="Campaign video, 5.3 million views"><video src="assets/vid-1.mp4" poster="assets/vid-1.jpg" muted loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-hidden="true"></video><button class="sound" type="button" aria-pressed="false" aria-label="Unmute video"><svg class="off" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h3l4-3.5v11L6 12H3z" fill="currentColor"/><path d="M13.5 7.5l5 5M18.5 7.5l-5 5"/></svg><svg class="on" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h3l4-3.5v11L6 12H3z" fill="currentColor"/><path d="M13.5 7.2a4 4 0 0 1 0 5.6M15.8 5a7 7 0 0 1 0 10"/></svg></button><figcaption><b>5.3M</b><span>views</span></figcaption></figure>
+      <figure class="reel" style="--i:2" aria-label="Campaign video, 101 thousand views"><video src="assets/tt-3.mp4" poster="assets/tt-3.jpg" muted loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-hidden="true"></video><button class="sound" type="button" aria-pressed="false" aria-label="Unmute video"><svg class="off" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h3l4-3.5v11L6 12H3z" fill="currentColor"/><path d="M13.5 7.5l5 5M18.5 7.5l-5 5"/></svg><svg class="on" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h3l4-3.5v11L6 12H3z" fill="currentColor"/><path d="M13.5 7.2a4 4 0 0 1 0 5.6M15.8 5a7 7 0 0 1 0 10"/></svg></button><figcaption><b>101K</b><span>views</span></figcaption></figure>
+      <figure class="reel" style="--i:3" aria-label="Campaign video, 3.7 million views"><video src="assets/vid-2.mp4" poster="assets/vid-2.jpg" muted loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-hidden="true"></video><button class="sound" type="button" aria-pressed="false" aria-label="Unmute video"><svg class="off" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h3l4-3.5v11L6 12H3z" fill="currentColor"/><path d="M13.5 7.5l5 5M18.5 7.5l-5 5"/></svg><svg class="on" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h3l4-3.5v11L6 12H3z" fill="currentColor"/><path d="M13.5 7.2a4 4 0 0 1 0 5.6M15.8 5a7 7 0 0 1 0 10"/></svg></button><figcaption><b>3.7M</b><span>views</span></figcaption></figure>
+      <figure class="reel" style="--i:4" aria-label="Campaign video, 1.5 million views"><video src="assets/tt-1.mp4" poster="assets/tt-1.jpg" muted loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-hidden="true"></video><button class="sound" type="button" aria-pressed="false" aria-label="Unmute video"><svg class="off" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h3l4-3.5v11L6 12H3z" fill="currentColor"/><path d="M13.5 7.5l5 5M18.5 7.5l-5 5"/></svg><svg class="on" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h3l4-3.5v11L6 12H3z" fill="currentColor"/><path d="M13.5 7.2a4 4 0 0 1 0 5.6M15.8 5a7 7 0 0 1 0 10"/></svg></button><figcaption><b>1.5M</b><span>views</span></figcaption></figure>
+      <figure class="reel" style="--i:5" aria-label="Campaign video, 202.8 thousand views"><video src="assets/vid-4.mp4" poster="assets/vid-4.jpg" muted loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-hidden="true"></video><button class="sound" type="button" aria-pressed="false" aria-label="Unmute video"><svg class="off" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h3l4-3.5v11L6 12H3z" fill="currentColor"/><path d="M13.5 7.5l5 5M18.5 7.5l-5 5"/></svg><svg class="on" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h3l4-3.5v11L6 12H3z" fill="currentColor"/><path d="M13.5 7.2a4 4 0 0 1 0 5.6M15.8 5a7 7 0 0 1 0 10"/></svg></button><figcaption><b>202.8K</b><span>views</span></figcaption></figure>
+      <figure class="reel" style="--i:6" aria-label="Campaign video, 1.1 million views"><video src="assets/tt-4.mp4" poster="assets/tt-4.jpg" muted loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-hidden="true"></video><button class="sound" type="button" aria-pressed="false" aria-label="Unmute video"><svg class="off" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h3l4-3.5v11L6 12H3z" fill="currentColor"/><path d="M13.5 7.5l5 5M18.5 7.5l-5 5"/></svg><svg class="on" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h3l4-3.5v11L6 12H3z" fill="currentColor"/><path d="M13.5 7.2a4 4 0 0 1 0 5.6M15.8 5a7 7 0 0 1 0 10"/></svg></button><figcaption><b>1.1M</b><span>views</span></figcaption></figure>
+      <figure class="reel" style="--i:7" aria-label="Campaign video, 1.1 million views"><video src="assets/vid-3.mp4" poster="assets/vid-3.jpg" muted loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-hidden="true"></video><button class="sound" type="button" aria-pressed="false" aria-label="Unmute video"><svg class="off" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h3l4-3.5v11L6 12H3z" fill="currentColor"/><path d="M13.5 7.5l5 5M18.5 7.5l-5 5"/></svg><svg class="on" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h3l4-3.5v11L6 12H3z" fill="currentColor"/><path d="M13.5 7.2a4 4 0 0 1 0 5.6M15.8 5a7 7 0 0 1 0 10"/></svg></button><figcaption><b>1.1M</b><span>views</span></figcaption></figure>
+    </div>
+    </section>
+
+
+    <section class="process on-dark" id="process">
+      <div class="wrap">
+        <div class="process-head">
+          <p class="eyebrow">The process</p>
+          <h2>first posts go live within 7–10 days.</h2>
+          <p class="lede">Two calls to get aligned, then we take it from there. You see every script and video before it posts.</p>
+        </div>
+        <ol class="steps">
+          <li class="track" aria-hidden="true"></li>
+          <li class="fill" aria-hidden="true"></li>
+          <li class="step">
+            <span class="when">Call 1</span>
+            <h3>Consultation</h3>
+            <p>We learn your product, positioning and goals, and make sure we're the right fit before anything starts.</p>
+          </li>
+          <li class="step">
+            <span class="when">Call 2</span>
+            <h3>Onboarding &amp; strategy</h3>
+            <p>We define the campaign, the audience and the hooks, and set the view goal we're working toward.</p>
+          </li>
+          <li class="step">
+            <span class="when">Day 7–10</span>
+            <h3>Creators start posting</h3>
+            <p>We source and brief creators. Every script and every video is approved by hand before it goes live.</p>
+          </li>
+          <li class="step">
+            <span class="when">Day 30+</span>
+            <h3>Run until the goal is hit</h3>
+            <p>We double down on what's working and keep the campaign running until your view goal is reached.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="contact on-dark" id="contact">
+      <div class="wrap">
+        <div class="inner">
+          <p class="eyebrow"><img src="assets/flame.png" alt="" width="48" height="77">Book a call</p>
+          <h2>pull up a <span class="wood">chair.</span></h2>
+          <p class="lede">Reach out to start your campaign today.</p>
+          <div class="actions">
+            <a class="btn btn-ember" href="https://calendly.com/gavinchengg/30min" target="_blank" rel="noopener">Reach out <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+          </div>
+        </div>
+        <footer class="foot">
+          <img src="assets/campfire-logo.png" alt="campfire" width="886" height="231">
+          <nav aria-label="Footer">
+            <a href="https://www.instagram.com/toby.lengg/" target="_blank" rel="noopener">Toby / IG</a>
+            <a href="https://www.linkedin.com/in/tobyleng/" target="_blank" rel="noopener">Toby / LinkedIn</a>
+            <a href="https://www.instagram.com/gavinchengg/" target="_blank" rel="noopener">Gavin / IG</a>
+            <a href="https://www.linkedin.com/in/gavinchengg/" target="_blank" rel="noopener">Gavin / LinkedIn</a>
+          </nav>
+          <span>© 2026 Campfire</span>
+        </footer>
+      </div>
+    </section>
+</main>
+</div>
+
+<canvas class="embers" aria-hidden="true"></canvas>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+
+  // fan the hero videos out once the page has painted
+  const hero = document.getElementById('hero');
+  requestAnimationFrame(() => setTimeout(() => hero.classList.remove('is-loading'), 120));
+
+  // conveyor belt: three identical copies so the loop never shows a gap
+  const track = document.querySelector('.belt-track');
+  const list = track.querySelector('ul');
+  for (let i = 0; i < 2; i++) {
+    const copy = list.cloneNode(true);
+    copy.setAttribute('aria-hidden', 'true');
+    track.appendChild(copy);
+  }
+
+  const head = document.querySelector('.site-head');
+  const page = document.getElementById('page');
+  const reels = document.querySelector('.reels');
+  const embersCv = document.querySelector('.embers');
+  const steps = document.querySelector('.steps');
+  const trackEl = steps.querySelector('.track');
+  const fillEl = steps.querySelector('.fill');
+  const stepEls = [...steps.querySelectorAll('.step')];
+
+  // the timeline runs from the first dot to the last one
+  const DOT = 8; // half the dot size
+  const layoutTimeline = () => {
+    const first = stepEls[0], last = stepEls[stepEls.length - 1];
+    const top = first.offsetTop + DOT + 2, height = last.offsetTop - first.offsetTop;
+    for (const el of [trackEl, fillEl]) { el.style.top = top + 'px'; el.style.height = height + 'px'; }
+  };
+
+  // page gradient, anchored to where the sections actually sit
+  const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  // peach -> orange -> dark brown in equal perceived-brightness steps, then dark brown -> black
+  const COLS = ['#FDF8EC','#FAF1E3','#F6E8D5','#F0D9BE','#E9C6A2','#D29868','#B86A36','#8D4924','#5A301C','#1C110B','#0A0706','#070504'].map(hex);
+  let stops = [], reelsMid = 0;
+  const docTop = el => el.getBoundingClientRect().top + scrollY;
+  const measure = () => {
+    layoutTimeline();
+    const H = page.offsetHeight;
+    const heroB = docTop(hero) + hero.offsetHeight;
+    const rT = docTop(reels), rH = reels.offsetHeight;
+    const process = document.getElementById('process');
+    const processB = docTop(process) + process.offsetHeight;
+    const pH = docTop(process.querySelector('.process-head')), span = pH - rT;
+    const ys = [0, heroB, docTop(document.getElementById('team')), docTop(document.getElementById('work')), rT, rT + span * .25, rT + span * .5, rT + span * .75, pH, pH + (processB - pH) * .5, processB, H];
+    for (let i = 1; i < ys.length; i++) ys[i] = Math.max(ys[i], ys[i - 1] + 1);
+    stops = ys.map((y, i) => [y, COLS[i]]);
+    page.style.backgroundImage = 'linear-gradient(180deg,' + stops.map(([y, c]) => `rgb(${c}) ${Math.round(y)}px`).join(',') + ')';
+    page.style.setProperty('--glow-y', Math.round(rT + rH * .5) + 'px');
+    page.style.setProperty('--glow2-y', Math.round(docTop(document.getElementById('process'))) + 'px');
+    reelsMid = rT + rH * .5;
+  };
+  const colorAt = y => {
+    if (!stops.length) return COLS[0];
+    if (y <= stops[0][0]) return stops[0][1];
+    for (let i = 1; i < stops.length; i++) {
+      const [y1, c1] = stops[i];
+      if (y <= y1) {
+        const [y0, c0] = stops[i - 1], t = (y - y0) / (y1 - y0);
+        return c0.map((v, k) => v + (c1[k] - v) * t);
+      }
+    }
+    return stops[stops.length - 1][1];
+  };
+  const CREAM = COLS[0], INK = COLS[COLS.length - 1];
+  const mix = (a, b, t) => a.map((v, k) => Math.round(v + (b[k] - v) * t));
+
+  let emberLevel = 0;
+  const onScroll = () => {
+    head.classList.toggle('scrolled', scrollY > 8);
+    // header takes the colour of the page behind it, nudged lighter or darker so the logo stays legible
+    const c = colorAt(scrollY + 34);
+    const lum = (.2126 * c[0] + .7152 * c[1] + .0722 * c[2]) / 255;
+    const dark = lum < .36;
+    head.classList.toggle('dark', dark);
+    head.style.backgroundColor = `rgba(${mix(c, dark ? INK : CREAM, dark ? .3 : .55)},.86)`;
+
+    // embers fade in as the page darkens
+    emberLevel = clamp((scrollY + innerHeight * .75 - reelsMid) / 700, 0, 1);
+    embersCv.style.opacity = emberLevel.toFixed(3);
+
+    // timeline fill follows a line a little below the middle of the screen
+    const anchor = innerHeight * .6;
+    const tr = trackEl.getBoundingClientRect();
+    const p = clamp((anchor - tr.top) / tr.height, 0, 1);
+    steps.style.setProperty('--p', p.toFixed(4));
+    for (const s of stepEls) {
+      const dotY = s.getBoundingClientRect().top + DOT;
+      s.classList.toggle('lit', dotY <= anchor + 1);
+    }
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', () => { measure(); onScroll(); });
+  measure(); onScroll();
+  if ('ResizeObserver' in window) new ResizeObserver(() => { measure(); onScroll(); }).observe(page);
+  document.fonts && document.fonts.ready.then(() => { measure(); onScroll(); });
+
+  // ---- belts: drift on their own, pause under the mouse, drag with the mouse, swipe with two fingers
+  const makeBelt = (el, speed, frame) => {
+    const st = { offset: 0, vel: 0, hover: false, drag: null, justDragged: false };
+    el.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') st.hover = true; });
+    el.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') st.hover = false; });
+    el.addEventListener('pointerdown', e => {
+      if (e.button !== 0 || e.target.closest('button')) return;
+      st.drag = { id: e.pointerId, x0: e.clientX, last: e.clientX, t: performance.now(), moved: false };
+      st.vel = 0;
+    });
+    addEventListener('pointermove', e => {
+      const d = st.drag;
+      if (!d || e.pointerId !== d.id) return;
+      if (!d.moved && Math.abs(e.clientX - d.x0) > 5) { d.moved = true; el.classList.add('dragging'); }
+      if (d.moved) {
+        const dx = e.clientX - d.last, now = performance.now();
+        st.offset -= dx;                                  // drag right, the belt moves right
+        st.vel = -dx / Math.max(1, now - d.t) * 16;       // px per frame, for a little glide on release
+        d.t = now;
+      }
+      d.last = e.clientX;
+    });
+    const end = e => {
+      const d = st.drag;
+      if (!d || e.pointerId !== d.id) return;
+      if (d.moved) { el.classList.remove('dragging'); st.justDragged = true; setTimeout(() => st.justDragged = false, 0); }
+      if (performance.now() - d.t > 80) st.vel = 0;       // held still before letting go: no glide
+      st.drag = null;
+    };
+    addEventListener('pointerup', end);
+    addEventListener('pointercancel', end);
+    // a drag shouldn't also count as a click on whatever it started on
+    el.addEventListener('click', e => { if (st.justDragged) { e.preventDefault(); e.stopPropagation(); } }, true);
+    el.addEventListener('dragstart', e => e.preventDefault());
+    // two-finger trackpad swipe (and shift + wheel) scrolls sideways
+    el.addEventListener('wheel', e => {
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      st.offset += e.deltaX * (e.deltaMode === 1 ? 16 : 1);
+      st.vel = 0;
+    }, { passive: false });
+
+    let last = 0;
+    const tick = t => {
+      const dt = last ? Math.min(t - last, 64) / 1000 : 0; last = t;
+      if (!st.drag) {
+        if (Math.abs(st.vel) > .05) { st.offset += st.vel * dt * 60; st.vel *= Math.pow(.93, dt * 60); } else st.vel = 0;
+        if (!st.hover && !reduce) st.offset += speed * dt;
+      }
+      frame(st.offset);
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  const wrap = (v, m) => ((v % m) + m) % m;
+
+  // companies belt: three copies of the list, shifted by one list-width per lap
+  makeBelt(document.querySelector('.belt'), 32, off => {
+    const lap = list.offsetWidth || 1;
+    track.style.transform = `translate3d(${-wrap(off, lap).toFixed(2)}px,0,0)`;
+  });
+
+  // video belt: cards wrap around individually; only the ones on screen play
+  const reelCards = [...reels.querySelectorAll('.reel')];
+  reelCards.forEach(c => { const v = c.querySelector('video'); v.muted = true; v.defaultMuted = true; });
+  const setPlaying = (c, on) => {
+    if (c._on === on) return;
+    c._on = on;
+    const v = c.querySelector('video');
+    if (on) v.play().catch(() => { c._on = false; }); else v.pause();
+  };
+  let step = 1, base0 = 0;
+  const sizeBelt = () => {
+    step = reelCards[1].offsetLeft - reelCards[0].offsetLeft;
+    base0 = reelCards[0].offsetLeft;
+    // add a second set if the screen is wider than one lap
+    if (step * reelCards.length < reels.clientWidth + step * 1.5 && !reels.dataset.doubled) {
+      reels.dataset.doubled = '1';
+      const n = reelCards.length;
+      reelCards.slice(0, n).forEach((c, i) => {
+        const copy = c.cloneNode(true);
+        copy.style.setProperty('--i', n + i);
+        copy.setAttribute('aria-hidden', 'true');
+        copy.querySelector('.sound').tabIndex = -1;
+        copy._on = undefined;
+        reels.appendChild(copy);
+        copy.querySelector('video').muted = true;
+        reelCards.push(copy);
+      });
+    }
+  };
+  sizeBelt();
+  addEventListener('resize', sizeBelt);
+  makeBelt(reels, 38, off => {
+    const lap = step * reelCards.length;
+    const rr = reels.getBoundingClientRect();
+    const rowVisible = rr.bottom > 0 && rr.top < innerHeight && !document.hidden;
+    const viewW = reels.clientWidth, cardW = reelCards[0].offsetWidth;
+    reelCards.forEach((c, i) => {
+      const base = base0 + i * step;
+      let x = wrap(base - off, lap);              // position within one lap
+      if (x > lap - step) x -= lap;               // re-enter from the left edge
+      c.style.transform = `translate3d(${(x - base).toFixed(2)}px,0,0)`;
+      const onScreen = rowVisible && x + cardW > 0 && x < viewW;
+      if (!reduce || c.classList.contains('has-sound')) setPlaying(c, onScreen);
+    });
+  });
+
+  // sound: one video at a time, restarted from the top so it's heard from the beginning
+  const toggleSound = btn => {
+    const card = btn.closest('.reel'), v = card.querySelector('video');
+    const turnOn = v.muted;
+    for (const c of reelCards) {
+      c.querySelector('video').muted = true;
+      c.classList.remove('has-sound');
+      const b = c.querySelector('.sound');
+      b.setAttribute('aria-pressed', 'false');
+      b.setAttribute('aria-label', 'Unmute video');
+    }
+    if (turnOn) {
+      v.muted = false;
+      v.currentTime = 0;
+      card.classList.add('has-sound');
+      btn.setAttribute('aria-pressed', 'true');
+      btn.setAttribute('aria-label', 'Mute video');
+      card._on = true;
+      v.play().catch(() => { card._on = false; });
+    }
+  };
+  // a press that starts on the speaker always counts as a tap on it, even if the pointer slides a little
+  let press = null, skipClick = false;
+  reels.addEventListener('pointerdown', e => {
+    const btn = e.target.closest('.sound');
+    if (btn && e.button === 0) { press = { btn, x: e.clientX, y: e.clientY }; e.stopPropagation(); }
+  });
+  addEventListener('pointerup', e => {
+    if (!press) return;
+    const { btn, x, y } = press; press = null;
+    if (Math.hypot(e.clientX - x, e.clientY - y) < 40) {
+      toggleSound(btn);
+      skipClick = true; setTimeout(() => skipClick = false, 400);
+    }
+  });
+  addEventListener('pointercancel', () => press = null);
+  // keyboard (Enter / Space) still works through click
+  reels.addEventListener('click', e => {
+    const btn = e.target.closest('.sound');
+    if (!btn) return;
+    if (skipClick) { skipClick = false; return; }
+    toggleSound(btn);
+  });
+
+  if (reduce) return;
+
+  // embers drifting up from the bottom of the screen, mostly from the right where the glow is
+  const ctx = embersCv.getContext('2d');
+  const COLORS = ['255,170,90', '240,110,45', '255,205,140'];
+  let w = 0, h = 0, parts = [];
+  const spawn = (anywhere) => {
+    const bias = Math.random() < .6;
+    return {
+      x: bias ? w * (.45 + Math.random() * .55) : Math.random() * w,
+      y: anywhere ? h * (.3 + Math.random() * .7) : h + 6,
+      r: .8 + Math.random() * 1.8,
+      vy: .3 + Math.random() * .8,
+      sway: Math.random() * Math.PI * 2,
+      life: anywhere ? Math.random() * 200 : 0,
+      max: 300 + Math.random() * 420,
+      c: COLORS[(Math.random() * COLORS.length) | 0]
+    };
+  };
+  const size = () => {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    w = innerWidth; h = innerHeight;
+    embersCv.width = w * dpr; embersCv.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = Math.round(clamp(w / 26, 22, 60));
+    parts = Array.from({ length: n }, () => spawn(true));
+  };
+  const tick = () => {
+    requestAnimationFrame(tick);
+    if (emberLevel <= 0 || document.hidden) return;
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < parts.length; i++) {
+      const p = parts[i];
+      p.life++; p.y -= p.vy; p.sway += .02; p.x += Math.sin(p.sway) * .3;
+      if (p.life > p.max || p.y < -10) { parts[i] = spawn(false); continue; }
+      const t = p.life / p.max;
+      const a = Math.min(1, t * 6) * (1 - t) * .9;
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(${p.c},${a})`;
+      ctx.shadowColor = `rgba(${p.c},${a})`;
+      ctx.shadowBlur = 6;
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  };
+  size();
+  addEventListener('resize', size);
+  requestAnimationFrame(tick);
+})();
+</script>
