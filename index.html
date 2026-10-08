@@ -148,7 +148,9 @@ p{margin:0}
 .page::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:
     radial-gradient(70% 800px at 76% var(--glow-y,34%), rgba(255,138,64,.16), rgba(255,138,64,0) 70%),
-    radial-gradient(50% 640px at 6% var(--glow2-y,58%), rgba(184,54,26,.16), rgba(184,54,26,0) 70%);
+    radial-gradient(50% 640px at 6% var(--glow2-y,58%), rgba(184,54,26,.16), rgba(184,54,26,0) 70%),
+    radial-gradient(120% 1400px at 80% calc(100% + 260px), rgba(240,120,50,.92) 0%, rgba(214,74,32,.58) 26%, rgba(150,52,22,.26) 46%, rgba(80,28,12,.08) 60%, rgba(23,17,12,0) 72%),
+    radial-gradient(75% 900px at 6% calc(100% + 220px), rgba(184,54,26,.42) 0%, rgba(184,54,26,0) 70%);
   animation:flicker 6s ease-in-out infinite}
 .on-dark{color:var(--cream)}
 .on-dark .eyebrow,.on-dark .lede{color:var(--smoke)}
@@ -195,7 +197,7 @@ p{margin:0}
 /* ---------- process: the timeline fills with fire as you scroll ---------- */
 .process{padding-block:clamp(3.5rem,6.5vw,5.5rem) 0}
 .process .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:2.5rem clamp(2rem,6vw,6rem);align-items:start}
-.process-head{display:grid;gap:1.25rem;position:sticky;top:calc(env(safe-area-inset-top,0px) + 120px)}
+.process-head{display:grid;gap:1.25rem}
 .steps{list-style:none;margin:0;padding:0 0 0 3.2rem;display:grid;gap:clamp(2.6rem,5vw,4rem);position:relative}
 .steps .track,.steps .fill{position:absolute;left:7px;top:0;width:2px;border-radius:2px}
 .steps .track{background:var(--line-dark)}
@@ -209,18 +211,12 @@ p{margin:0}
 .step p{color:var(--smoke);font-size:1rem;max-width:40ch}
 @media (max-width:860px){
   .process .wrap{grid-template-columns:minmax(0,1fr)}
-  .process-head{position:static}
   .steps{padding-left:2.6rem}
   .step::before{left:-2.6rem}
 }
 
 /* ---------- contact ---------- */
 .contact{position:relative;padding-block:clamp(4rem,8vw,6.5rem) 0;overflow:hidden}
-.contact::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:
-    radial-gradient(110% 900px at 82% calc(100% + 260px), rgba(240,120,50,.95) 0%, rgba(214,74,32,.6) 30%, rgba(120,40,16,.2) 55%, rgba(23,17,12,0) 72%),
-    radial-gradient(70% 500px at 5% calc(100% + 200px), rgba(184,54,26,.45) 0%, rgba(23,17,12,0) 70%);
-  animation:flicker 5s ease-in-out infinite}
 @keyframes flicker{0%,100%{opacity:.88}22%{opacity:1}41%{opacity:.84}63%{opacity:.97}80%{opacity:.9}}
 .contact .inner{display:grid;justify-items:start;gap:1.6rem;max-width:48rem}
 .contact h2{font-size:clamp(3rem,9vw,7.4rem);letter-spacing:-.055em;line-height:.88}
